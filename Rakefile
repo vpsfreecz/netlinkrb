@@ -1,4 +1,5 @@
 require 'rake/testtask'
+require 'bundler/gem_tasks'
 
 ROOT = File.dirname(__FILE__)
 
@@ -10,7 +11,7 @@ end
 desc "Create the size_t size macro for c_struct"
 file 'lib/linux/c_struct_sizeof_size_t.rb' do |t|
   begin
-    sz = Integer(`echo __SIZEOF_SIZE_T__ | /usr/bin/gcc -E -P -`)
+    sz = Integer(`echo __SIZEOF_SIZE_T__ | gcc -E -P -`)
     File.open(t.name, 'w+') do |fh|
       fh.puts "module Linux ; class CStruct ; SIZEOF_SIZE_T = #{sz} ; end ; end"
     end

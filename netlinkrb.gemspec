@@ -13,5 +13,4 @@ Gem::Specification.new do |s|
   s.description = "Ruby native interface to the Netlink API which avoids shelling out to command-line tools as much as possible."
   s.files = Dir["{lib,examples}/**/*"] + %w{README}
   s.require_path = "lib"
-  s.add_dependency "ffi"
 end
